@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>60 razones para quedarte 💗</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --papel:#FFF6F7;
+    --tinta:#6E1B34;
+    --rosa:#E85D78;
+    --rosita:#FBD9DF;
+    --dorado:#D9A05B;
+    --blanco:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'Quicksand',sans-serif;
+    background:var(--papel);
+    color:var(--tinta);
+    overflow-x:hidden;
+  }
+  /* corazones flotando */
+  .hearts{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+  .hearts span{
+    position:absolute;bottom:-8vh;
+    font-size:20px;opacity:.35;
+    animation:subir linear infinite;
+  }
+  @keyframes subir{
+    0%{transform:translateY(0) rotate(0deg)}
+    100%{transform:translateY(-115vh) rotate(30deg)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .hearts span{animation:none;display:none}
+    *{transition:none!important;animation:none!important}
+  }
+
+  .contenido{position:relative;z-index:1}
+
+  /* HERO */
+  header{
+    min-height:88vh;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:40px 24px;
+  }
+  .corazon-grande{
+    font-size:64px;
+    animation:latido 1.4s ease-in-out infinite;
+    margin-bottom:12px;
+  }
+  @keyframes latido{
+    0%,100%{transform:scale(1)}
+    25%{transform:scale(1.18)}
+    40%{transform:scale(1)}
+    60%{transform:scale(1.12)}
+  }
+  .numero-hero{
+    font-family:'Dancing Script',cursive;
+    font-size:clamp(90px,22vw,170px);
+    line-height:.9;
+    color:var(--rosa);
+    text-shadow:0 4px 0 var(--rosita);
+  }
+  h1{
+    font-family:'Dancing Script',cursive;
+    font-size:clamp(34px,7vw,58px);
+    font-weight:700;
+    margin-top:4px;
+  }
+  .sub{
+    margin-top:16px;
+    font-size:17px;
+    font-weight:500;
+    color:#9c5468;
+    max-width:420px;
+  }
+  .flecha{
+    margin-top:44px;
+    font-size:26px;color:var(--rosa);
+    animation:rebote 1.6s ease-in-out infinite;
+  }
+  @keyframes rebote{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(10px)}
+  }
+
+  /* RAZONES */
+  .razones{
+    max-width:900px;margin:0 auto;
+    padding:20px 20px 60px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:16px;
+  }
+  .card{
+    background:var(--blanco);
+    border:2px solid var(--rosita);
+    border-radius:18px;
+    padding:20px 18px 18px;
+    box-shadow:0 4px 14px rgba(232,93,120,.10);
+    display:flex;gap:14px;align-items:flex-start;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover{
+    transform:translateY(-4px) rotate(-.6deg);
+    box-shadow:0 10px 24px rgba(232,93,120,.22);
+    border-color:var(--rosa);
+  }
+  .num{
+    font-family:'Dancing Script',cursive;
+    font-size:34px;font-weight:700;
+    color:var(--rosa);
+    min-width:44px;line-height:1;
+    padding-top:2px;
+  }
+  .card p{font-size:15.5px;font-weight:500;line-height:1.45}
+
+  /* SECCIÓN FINAL */
+  .final{
+    padding:70px 24px 90px;
+    text-align:center;
+    background:linear-gradient(180deg,var(--papel) 0%,var(--rosita) 100%);
+  }
+  .final h2{
+    font-family:'Dancing Script',cursive;
+    font-size:clamp(36px,8vw,56px);
+    margin-bottom:8px;
+  }
+  .final .pista{color:#9c5468;font-weight:500;margin-bottom:28px}
+
+  .sobre{
+    max-width:420px;margin:0 auto;
+    perspective:1200px;cursor:pointer;
+  }
+  .sobre-inner{
+    position:relative;width:100%;min-height:230px;
+    transition:transform .8s cubic-bezier(.2,.8,.3,1);
+    transform-style:preserve-3d;
+  }
+  .sobre.abierto .sobre-inner{transform:rotateY(180deg)}
+  .cara{
+    position:absolute;inset:0;
+    backface-visibility:hidden;
+    border-radius:22px;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    padding:30px 26px;
+  }
+  .frente{
+    background:var(--rosa);
+    color:#fff;
+    box-shadow:0 12px 30px rgba(110,27,52,.28);
+  }
+  .frente .icono{font-size:46px;margin-bottom:10px}
+  .frente strong{font-size:20px}
+  .frente small{margin-top:8px;opacity:.85;font-weight:500}
+  .atras{
+    background:var(--blanco);
+    border:3px solid var(--rosa);
+    transform:rotateY(180deg);
+    box-shadow:0 12px 30px rgba(110,27,52,.18);
+  }
+  .atras p{
+    font-family:'Dancing Script',cursive;
+    font-size:clamp(24px,6vw,32px);
+    font-weight:700;line-height:1.25;
+  }
+  .atras small{
+    margin-top:14px;font-weight:600;color:var(--rosa);font-size:15px;
+  }
+
+  footer{
+    text-align:center;padding:26px;
+    font-weight:600;color:#9c5468;font-size:14px;
+    background:var(--rosita);
+  }
+</style>
+</head>
+<body>
+
+<div class="hearts" aria-hidden="true"></div>
+
+<div class="contenido">
+
+  <header>
+    <div class="corazon-grande">💗</div>
+    <div class="numero-hero">60</div>
+    <h1>razones para quedarte</h1>
+    <p class="sub">...y solo 1 para irte. Léelas todas, mi amor, porque cada una la escribí pensando en ti.</p>
+    <div class="flecha">▼</div>
+  </header>
+
+  <section class="razones" id="lista"></section>
+
+  <section class="final">
+    <h2>Y 1 razón para irte</h2>
+    <p class="pista">Toca el corazón para descubrirla 👇</p>
+    <div class="sobre" id="sobre" role="button" tabindex="0" aria-label="Descubrir la razón para irte">
+      <div class="sobre-inner">
+        <div class="cara frente">
+          <div class="icono">💌</div>
+          <strong>La única razón para irte</strong>
+          <small>(toca para abrir)</small>
+        </div>
+        <div class="cara atras">
+          <p>Que ya no seas feliz a mi lado,<br>pero te prometo luchar cada día para que esa razón nunca exista. 💗</p>
+          <small>Quédate. Te amo.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Hecho con todo mi corazón, para ti 💘</footer>
+
+</div>
+
+<script>
+const razones = [
+  "Porque te amo con todo mi corazón",
+  "Porque eres el amor de mi vida",
+  "Porque ninguna chica va a ocupar tu lugar",
+  "Porque me haces reír siempre",
+  "Porque siento que contigo ya gané",
+  "Me das mil años de vida estando a tu lado",
+  "Porque contigo descubrí el amor",
+  "Tu sonrisa",
+  "Tus ojitos preciosos",
+  "Eres mi luz cuando me siento solo",
+  "Me encanta cuando me apoyas en mis sueños",
+  "Eres mi compañera de vida",
+  "Quiero hacerte la chica más feliz del mundo",
+  "Porque no quiero hacer mi vida con otra persona",
+  "Quiero viajar juntos",
+  "Quiero recorrer lugares contigo",
+  "Quiero verte cumplir tus metas",
+  "Porque quiero una hija contigo",
+  "Me encanta hacer todo contigo",
+  "Sueño con hacer mi casa y que estés tú",
+  "Eres la persona que más amo",
+  "Porque me siento un bebé cuando estoy contigo",
+  "Quiero hacerte feliz",
+  "Tengo una conexión única contigo",
+  "Para mí eres mi princesita de Disney",
+  "Eres la mujer que quiero que esté en todo conmigo",
+  "Porque me apoyas en todo",
+  "Porque me encanta tu cara",
+  "Porque eres única",
+  "Me encanta hacerte reír",
+  "Quiero que seas solo mía",
+  "No quiero verte con otra persona",
+  "Tus chistes",
+  "Quiero poder decirle a todo el mundo que vas a ser la mujer de mi vida y la madre de mis hijos",
+  "Quiero regalarte cosas",
+  "Porque te necesito en cada momento de mi vida",
+  "Por tus pestañas",
+  "Quiero ser feliz a tu lado",
+  "Quiero ir a vivir juntos contigo",
+  "No quiero peleas ni discusiones",
+  "Quiero ir a muchos lados que tenemos pendientes",
+  "Quiero que confíes en mí",
+  "Quiero mirar pelis abrazaditos",
+  "Eres parte de mi alma y si siento que no te tengo, me muero",
+  "Quiero presumirte por todos lados",
+  "Cuando te veo sonreír se me alegra el corazón",
+  "Me encanta cuando me haces detallitos",
+  "Me encanta tu personalidad",
+  "No olvido el primer día que salimos",
+  "Porque compartimos momentos lindos",
+  "Porque me amas tal como soy",
+  "Porque cuando estoy contigo siento paz",
+  "Porque perdonar también es crecer",
+  "Porque amo todo de ti",
+  "Porque me duele imaginarte lejos",
+  "Porque amo tu mal humor",
+  "Porque amo cada apodo que me pones",
+  "Porque eres lo mejor que me pasó",
+  "Porque eres perfecta para mí",
+  "Porque estar contigo lo soluciona todo"
+];
+
+const lista = document.getElementById('lista');
+razones.forEach((r,i)=>{
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `<div class="num">${i+1}</div><p>${r}</p>`;
+  lista.appendChild(card);
+});
+
+// corazones flotando
+const hearts = document.querySelector('.hearts');
+const emojis = ['💗','💖','💕','🤍','💘'];
+for(let i=0;i<18;i++){
+  const s = document.createElement('span');
+  s.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+  s.style.left = Math.random()*100 + 'vw';
+  s.style.fontSize = (14 + Math.random()*20) + 'px';
+  s.style.animationDuration = (9 + Math.random()*12) + 's';
+  s.style.animationDelay = (-Math.random()*15) + 's';
+  hearts.appendChild(s);
+}
+
+// carta final
+const sobre = document.getElementById('sobre');
+const abrir = ()=> sobre.classList.toggle('abierto');
+sobre.addEventListener('click', abrir);
+sobre.addEventListener('keydown', e=>{
+  if(e.key==='Enter'||e.key===' '){e.preventDefault();abrir();}
+});
+</script>
+</body>
+</html>
